@@ -1,0 +1,17 @@
+query test($zoneTag: string) { 
+        viewer {
+          zones( filter: { zoneTag: $zoneTag } ) 
+          { 
+            httpRequestsAdaptiveGroups( 
+              filter: $filter 
+              limit: 10000 
+              orderBy: [count_DESC]
+              ) {
+                count
+                dimensions {
+                    clientCountryName
+                }
+              } 
+            } 
+          } 
+        }
